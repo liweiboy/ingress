@@ -112,7 +112,7 @@ func (c *controller) syncService(key string) error {
 	// 新增和删除
 	_, ok := service.GetAnnotations()["ingress/http"]
 	ingress, err := c.ingressLister.Ingresses(namespaceKey).Get(name)
-	if err != nil && errors.IsNotFound(err) {
+	if err != nil && !errors.IsNotFound(err) {
 		return err
 	}
 	if ok && errors.IsNotFound(err) {
