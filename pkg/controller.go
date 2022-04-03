@@ -57,7 +57,7 @@ func (c *controller) deleteIngress(obj interface{}) {
 	if ownerReference == nil {
 		return
 	}
-	if ownerReference.Kind != "service" {
+	if ownerReference.Kind != "Service" {
 		return
 	}
 	c.queue.Add(ingress.Namespace + "/" + ingress.Name)
